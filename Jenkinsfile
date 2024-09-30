@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = foodmuch // Change this to your desired image name
+        DOCKER_IMAGE = 'foodmuch' // Docker image name
         DOCKER_TAG = 'latest' // You can change the tag as needed
     }
 
@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from your repository
-                git 'https://github.com/HariharanAI/Responsive-FoodMuch-Website.git 
+                git url: 'https://github.com/HariharanAI/Responsive-FoodMuch-Website.git', branch: 'main'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Run the Docker container (customize as needed)
-                    sh "docker run -d -p 5080:5080 ${DOCKER_IMAGE}:${DOCKER_TAG}"
+                    sh "docker run -d -p 5080:80 ${DOCKER_IMAGE}:${DOCKER_TAG}"
                 }
             }
         }
