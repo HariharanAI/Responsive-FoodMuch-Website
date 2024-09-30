@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Run the Docker container (customize as needed)
-                    sh "docker run -d -p 5080:80 ${DOCKER_IMAGE}:${DOCKER_TAG}"
+                    sh "docker run -d -p 5080:5080 ${DOCKER_IMAGE}:${DOCKER_TAG}"
                 }
             }
         }
